@@ -1,21 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14A389" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Interval-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller title="Interval" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Run__WatchKit_Extension">
+                    <items>
+                        <group width="1" height="73.5" alignment="left" id="d8o-tQ-B95">
+                            <items>
+                                <picker width="0.40000000000000002" height="60" alignment="center" verticalAlignment="center" focusStyle="stack" indicatorMode="shownWhileFocused" id="4JR-U9-ZVa">
+                                    <connections>
+                                        <action selector="runPickerValueChanged:" destination="AgC-eL-Hgc" id="akg-lY-CAt"/>
+                                    </connections>
+                                </picker>
+                                <group width="9" height="60" alignment="center" id="Ag1-eX-lTG"/>
+                                <picker width="0.40000000000000002" height="58" alignment="center" verticalAlignment="center" focusStyle="stack" indicatorMode="shownWhileFocused" id="ymt-Y1-zhK">
+                                    <connections>
+                                        <action selector="walkPickerValueChanged:" destination="AgC-eL-Hgc" id="udO-Ou-Y9h"/>
+                                    </connections>
+                                </picker>
+                            </items>
+                        </group>
+                        <group width="1" height="24.5" alignment="left" verticalAlignment="center" id="d19-vw-2Jw">
+                            <items>
+                                <label width="0.5" alignment="left" verticalAlignment="center" text="RUN" textAlignment="center" id="Cof-1g-wlt"/>
+                                <label width="0.5" alignment="left" verticalAlignment="center" text="WALK" textAlignment="center" id="oQv-Vj-c9L"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" id="IF7-5o-iOp">
+                            <items>
+                                <button width="125" alignment="center" verticalAlignment="center" title="OK" id="Bd7-IE-S9N">
+                                    <connections>
+                                        <segue destination="n33-Ak-e1S" kind="push" identifier="MinutesSegue" id="xVH-Sr-RJn"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="runPicker" destination="4JR-U9-ZVa" id="GRR-6B-dGk"/>
+                        <outlet property="walkPicker" destination="ymt-Y1-zhK" id="Si0-Uu-HE3"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="235" y="347"/>
+            <point key="canvasLocation" x="235" y="363"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModuleProvider="target">
+                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Run__WatchKit_App" customModuleProvider="target">
                     <items>
                         <group alignment="left" id="t8f-Gd-c4y"/>
                         <group alignment="left" id="uCw-4Q-Ouw"/>
@@ -44,9 +81,74 @@
         <!--Notification Controller-->
         <scene sceneID="KIl-fV-djm">
             <objects>
-                <controller id="gdX-wl-uQE" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="Run__WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
+        </scene>
+        <!--Minutes-->
+        <scene sceneID="6t2-mL-umk">
+            <objects>
+                <controller title="Minutes" id="n33-Ak-e1S" customClass="MinutesInterfaceController" customModule="Run__WatchKit_Extension">
+                    <items>
+                        <group width="1" height="73.5" alignment="left" id="MVt-9m-4Vh">
+                            <items>
+                                <picker width="0.40000000000000002" height="60" alignment="center" verticalAlignment="center" focusStyle="stack" indicatorMode="shownWhileFocused" id="CLC-Zp-eQE"/>
+                            </items>
+                        </group>
+                        <group width="1" height="24.5" alignment="left" verticalAlignment="center" id="WgJ-DV-B1c">
+                            <items>
+                                <label width="1" alignment="left" verticalAlignment="center" text="MINUTES" textAlignment="center" id="2di-AV-5Zu"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" id="b5j-QA-b2j">
+                            <items>
+                                <button width="125" alignment="center" verticalAlignment="center" title="START" id="scG-hg-YqV">
+                                    <connections>
+                                        <segue destination="ZGl-gY-rRe" kind="push" id="vyq-yv-b9k"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="minutesPicker" destination="CLC-Zp-eQE" id="nWs-dR-aae"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="477" y="363"/>
+        </scene>
+        <!--Workout-->
+        <scene sceneID="n7E-MY-MfO">
+            <objects>
+                <controller title="Workout" id="ZGl-gY-rRe" customClass="WorkoutInterfaceController" customModule="Run__WatchKit_Extension">
+                    <items>
+                        <group width="1" height="0.59999999999999998" alignment="left" id="NQD-tQ-F4X">
+                            <items>
+                                <timer width="1" height="1" alignment="left" textAlignment="center" id="UL0-bu-hxk">
+                                    <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="44"/>
+                                    <calendarUnit key="units" minute="YES" second="YES"/>
+                                </timer>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" id="7Bf-WH-Ci3">
+                            <items>
+                                <button width="128" alignment="center" title="PAUSE" id="WX8-rH-dWY">
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <connections>
+                                        <action selector="pauseButtonPressed" destination="ZGl-gY-rRe" id="0vO-sP-0pV"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="pausePlayButton" destination="WX8-rH-dWY" id="0ug-SB-m4q"/>
+                        <outlet property="workoutTimer" destination="UL0-bu-hxk" id="k66-bj-na1"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="706" y="363"/>
         </scene>
     </scenes>
 </document>
